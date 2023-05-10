@@ -1,0 +1,48 @@
+{
+	"name": "supplychain-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "admin",
+			"password": "adminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "SupplierMSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"supplychain-channel": {
+			"peers": {
+				"peer0.supplier.supplychain.com": {}
+			}
+		}
+	},
+	"organizations": {
+		"SupplierMSP": {
+			"mspid": "SupplierMSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/supplier.supplychain.com/users/Admin@supplier.supplychain.com/msp/keystore/2857c2d8f5cb8c7d5e09806fb40fd75cdbddba92683a862cef1f6fc0ef369594_sk"
+			},
+			"peers": ["peer0.supplier.supplychain.com"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/supplier.supplychain.com/users/Admin@supplier.supplychain.com/msp/signcerts/cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.supplier.supplychain.com": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/supplier.supplychain.com/peers/peer0.supplier.supplychain.com/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.supplier.supplychain.com:7051"
+		}
+	}
+}
